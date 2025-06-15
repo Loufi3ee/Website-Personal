@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Check Waifu</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: url("miku background.jpg") no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2em;
+    }
+
+    /* Overlay gelap agar tulisan tetap terbaca */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.75); /* Efek gelap */
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
+
+    .box {
+      background: rgba(34, 34, 34, 0.85);
+      padding: 30px;
+      border-radius: 10px;
+      text-align: left;
+      box-shadow: 0 0 15px #0f0;
+      display: flex;
+      align-items: center;
+      max-width: 600px;
+    }
+
+    .text {
+      max-width: 300px;
+    }
+
+    .khodam-image {
+      width: 100px;
+      height: auto;
+      margin-left: 20px;
+      border-radius: 10px;
+      border: 2px solid #0f0;
+      display: none;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 25px;
+      font-size: 16px;
+      border: none;
+      background: #0f0;
+      color: #000;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #0a0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="box">
+      <div class="text">
+        <h1>Cek Waifu</h1>
+        <p id="result">Klik tombol di bawah untuk melihat waifu-mu...</p>
+      </div>
+      <img id="khodamImage" class="khodam-image" src="" alt="">
+    </div>
+
+    <button onclick="checkKhodam()">Check Sekarang</button>
+  </div>
+
+  <script>
+    const khodams = [
+      {
+        name: "Waguri Kaokuro",
+        image: "waguri.jpg"
+      },
+      {
+        name: "Kaguya Shinomiya",
+        image: "nakano_miku-removebg-preview.png"
+      },
+      {
+        name: "Furina",
+        image: "furina.jpg"
+      },
+      {
+        name: "Hutao",
+        image: "hutao.jpg"
+      },
+      {
+        name: "citlali",
+        image: "citlali.jpg"
+      },
+      {
+        name: "Cicak",
+        image: "cicak.jpg"
+      },
+      {
+        name: "Frieren",
+        image: "frieren.jpg"
+      },
+      {
+        name: "Fern",
+        image: "fern.jpg"
+      },
+      {
+        name: "Mao Mao",
+        image: "maomao.jpg"
+      }
+    ];
+
+    function checkKhodam() {
+      const randomIndex = Math.floor(Math.random() * khodams.length);
+      const selected = khodams[randomIndex];
+
+      document.getElementById("result").textContent = "Waifu-mu adalah: " + selected.name;
+      
+      const img = document.getElementById("khodamImage");
+      img.src = selected.image;
+      img.alt = selected.name;
+      img.style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
